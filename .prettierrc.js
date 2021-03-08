@@ -1,15 +1,29 @@
+/**
+* @file Prettier configuration for Solidity
+* @version 1.0.3
+* @summary base config adapted from AirBNB to minizmie diff churn
+* @overrides solidity settings from Solidity Documentation
+*/
+
+'use strict';
+
 module.exports = {
+  arrowParens: "always",
+  bracketSpacing: true,
+  endOfLine: "lf",
+  printWidth: 100,
   singleQuote: true,
-  bracketSpacing: false,
-  overrides: [
-    {
-      files: '*.sol',
+  tabWidth: 2,
+  trailingComma: "all",
+  overrides: [{
+      files: "*.sol",
       options: {
-        printWidth: 120,
-        tabWidth: 4,
-        singleQuote: false,
-        explicitTypes: 'always',
-      },
-    },
-  ],
+          printWidth: 120,
+          tabWidth: 4,
+          useTabs: false,
+          singleQuote: false,
+          bracketSpacing: false,
+          explicitTypes: "always",
+      }
+  }]
 };
