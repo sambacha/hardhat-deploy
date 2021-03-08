@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+/// SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
 abstract contract Proxied {
@@ -7,13 +7,19 @@ abstract contract Proxied {
     /// is meant to be used without proxy
     modifier proxied() {
         address ownerAddress = _owner();
-        // With hardhat-deploy proxies
-        // the ownerAddress is zero only for the implementation contract
-        // if the implementation contract want to be used as standalone
-        // it simply has to execute the `proxied` function
-        // This ensure the ownerAddress is never zero post deployment
+        /** 
+        * @dev With hardhat-deploy proxies
+        * the ownerAddress is zero only for the implementation contract
+        * if the implementation contract want to be used as standalone
+        * it simply has to execute the `proxied` function
+        */ This ensure the ownerAddress is never zero post deployment
         if (ownerAddress == address(0)) {
-            // ensure can not be called twice when used outside of proxy : no admin
+            // @note ensure can not be called twice when used outside of proxy : no admin    
+          /**
+           * @dev Storage slot with the admin of the contract.
+           * This is the keccak-256 hash of "eip1967.proxy.admin" subtracted by 1, and is
+           * validated in the constructor.
+           */
             // solhint-disable-next-line security/no-inline-assembly
             assembly {
                 sstore(
